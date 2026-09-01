@@ -74,7 +74,7 @@ async function executeViaWandbox(code: string, stdin: string = ''): Promise<Comp
         code,
         compiler: 'gcc-head',
         stdin: stdin || '',
-        'compiler-option-raw': '-std=c++20 -O2',
+        'compiler-option-raw': "-std=c++20\n-O2",
       }),
     });
 

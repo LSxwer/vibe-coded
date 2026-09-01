@@ -56,7 +56,7 @@ export default async function handler(req: any, res: any) {
         code,
         compiler: 'gcc-head',
         stdin,
-        'compiler-option-raw': '-std=c++20 -O2',
+        'compiler-option-raw': "-std=c++20\n-O2",
       }),
     });
 
