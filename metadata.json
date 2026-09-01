@@ -1,0 +1,6 @@
+{
+  "name": "CppZero: Learn C++ for Beginners",
+  "description": "Interactive beginner-friendly C++ learning platform with live coding exercises, curated public resources, syntax snippets, memory visualizer, and progress tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

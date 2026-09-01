@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #FDFDFB;
+    color: #1A1A1A;
+  }
+  .font-serif {
+    font-family: 'Newsreader', 'Playfair Display', Georgia, serif;
+  }
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+/* Custom Editorial scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F9F9F7;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4D4CE;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1A1A1A;
+}
+
+
