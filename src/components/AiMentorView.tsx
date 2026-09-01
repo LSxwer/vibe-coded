@@ -147,52 +147,52 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       
       {/* View Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[#1A1A1A]">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center shadow-md shadow-indigo-500/20">
-              <Bot className="w-5 h-5 text-white" />
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-9 h-9 bg-[#1A1A1A] text-[#FF6321] flex items-center justify-center shadow-xs">
+              <Bot className="w-5 h-5" />
             </div>
-            <h1 className="text-2xl font-black text-white tracking-tight">
-              AI C++ Mentor & Compiler Doctor
+            <h1 className="font-serif text-2xl sm:text-3xl font-black text-[#1A1A1A] tracking-tight">
+              AI Academic Mentor & Compiler Doctor
             </h1>
           </div>
-          <p className="text-sm text-slate-400">
-            Powered by Google Gemini 3.7 — Get instant concept explanations, compiler error debugging, and dynamic exercises.
+          <p className="text-xs text-[#666] font-medium mt-1">
+            Powered by Google Gemini — Multi-model intelligence for concept mastery, compiler diagnostics, and dynamic C++ exercises.
           </p>
         </div>
 
         {/* Sub-Tabs Selector */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-900 border border-slate-800 shrink-0">
+        <div className="flex items-center gap-1 p-1 bg-[#F0F0ED] border border-[#1A1A1A] shrink-0">
           <button
             onClick={() => setActiveSubTab('chat')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+            className={`px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider transition-colors ${
               activeSubTab === 'chat'
-                ? 'bg-blue-600 text-white'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#1A1A1A] text-white shadow-xs'
+                : 'text-[#666] hover:text-[#1A1A1A]'
             }`}
           >
-            AI Mentor Chat
+            Academic Mentor
           </button>
           <button
             onClick={() => setActiveSubTab('errorDoctor')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+            className={`px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider transition-colors ${
               activeSubTab === 'errorDoctor'
-                ? 'bg-blue-600 text-white'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#1A1A1A] text-white shadow-xs'
+                : 'text-[#666] hover:text-[#1A1A1A]'
             }`}
           >
-            Compiler Error Doctor
+            Error Clinic
           </button>
           <button
             onClick={() => setActiveSubTab('generator')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+            className={`px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider transition-colors ${
               activeSubTab === 'generator'
-                ? 'bg-blue-600 text-white'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#1A1A1A] text-white shadow-xs'
+                : 'text-[#666] hover:text-[#1A1A1A]'
             }`}
           >
-            Exercise Generator
+            Exercise Forge
           </button>
         </div>
       </div>
@@ -202,10 +202,10 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* Main Chat Panel (8 Cols) */}
-          <div className="lg:col-span-8 bg-slate-900/90 border border-slate-800 rounded-2xl flex flex-col h-[650px] shadow-sm overflow-hidden">
+          <div className="lg:col-span-8 bg-white border-2 border-[#1A1A1A] flex flex-col h-[650px] shadow-sm overflow-hidden">
             
             {/* Chat Messages Log */}
-            <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4">
+            <div className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4 bg-[#FAF9F5]">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -214,20 +214,20 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
                   }`}
                 >
                   {msg.sender === 'assistant' && (
-                    <div className="w-8 h-8 rounded-xl bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center shrink-0">
-                      <Bot className="w-4 h-4 text-indigo-400" />
+                    <div className="w-8 h-8 bg-[#1A1A1A] text-[#FF6321] flex items-center justify-center shrink-0 border border-[#1A1A1A]">
+                      <Bot className="w-4 h-4" />
                     </div>
                   )}
 
                   <div
-                    className={`max-w-[85%] rounded-2xl p-4 text-xs leading-relaxed ${
+                    className={`max-w-[85%] p-4 text-xs leading-relaxed border ${
                       msg.sender === 'user'
-                        ? 'bg-blue-600 text-white shadow-md shadow-blue-500/10'
-                        : 'bg-slate-950 border border-slate-800/80 text-slate-200 shadow-sm'
+                        ? 'bg-[#1A1A1A] text-white border-[#1A1A1A] shadow-xs'
+                        : 'bg-white border-[#1A1A1A] text-[#222] shadow-xs'
                     }`}
                   >
                     {msg.codeSnippet && (
-                      <div className="mb-2 p-2 rounded-lg bg-slate-900 font-mono text-[11px] text-blue-200 overflow-x-auto">
+                      <div className="mb-2 p-2 bg-[#F0F0ED] border border-[#1A1A1A]/30 font-mono text-[11px] text-[#1A1A1A] overflow-x-auto">
                         <pre>{msg.codeSnippet}</pre>
                       </div>
                     )}
@@ -236,7 +236,9 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
                       {msg.text}
                     </div>
 
-                    <div className="text-[10px] text-slate-400 mt-2 text-right">
+                    <div className={`text-[9px] font-mono uppercase tracking-widest mt-2 text-right ${
+                      msg.sender === 'user' ? 'text-white/60' : 'text-[#888]'
+                    }`}>
                       {msg.timestamp}
                     </div>
                   </div>
@@ -244,16 +246,16 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
               ))}
 
               {isLoading && (
-                <div className="flex items-center gap-3 text-xs text-indigo-400 bg-slate-950 p-4 rounded-2xl border border-slate-800/80 max-w-[70%]">
-                  <Sparkles className="w-4 h-4 animate-spin text-indigo-400" />
-                  <span>AI Mentor is thinking and composing explanation...</span>
+                <div className="flex items-center gap-3 text-xs text-[#1A1A1A] bg-white p-4 border border-[#1A1A1A] max-w-[75%] shadow-xs">
+                  <Sparkles className="w-4 h-4 animate-spin text-[#FF6321]" />
+                  <span className="font-medium">Academic mentor is analyzing topic and compiling guidance...</span>
                 </div>
               )}
               <div ref={chatBottomRef} />
             </div>
 
             {/* Input Bar */}
-            <div className="p-3 bg-slate-950 border-t border-slate-800 space-y-2">
+            <div className="p-3 bg-white border-t border-[#1A1A1A] space-y-2">
               <div className="flex items-center gap-2">
                 <textarea
                   value={inputQuestion}
@@ -264,16 +266,16 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
                       handleSendMessage();
                     }
                   }}
-                  placeholder="Ask a question about C++ syntax, pointers, memory, STL, or exercises..."
+                  placeholder="Ask a question about C++ syntax, pointers, memory model, STL, or debugging..."
                   rows={2}
-                  className="flex-1 p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-100 placeholder-slate-500 outline-none focus:border-blue-500 resize-none"
+                  className="flex-1 p-2.5 bg-[#FAF9F5] border border-[#1A1A1A] text-xs font-mono text-[#1A1A1A] placeholder-[#888] outline-none resize-none focus:bg-white"
                 />
 
                 <button
                   id="btn-send-ai-message"
                   onClick={handleSendMessage}
                   disabled={isLoading || !inputQuestion.trim()}
-                  className="p-3 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white shadow-md shadow-blue-500/20 transition-all"
+                  className="p-3 bg-[#1A1A1A] hover:bg-[#FF6321] disabled:opacity-50 text-white transition-colors self-stretch flex items-center justify-center"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -286,44 +288,44 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
           <div className="lg:col-span-4 space-y-4">
             
             {/* Quick Starters */}
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-sm">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                <Lightbulb className="w-4 h-4 text-amber-400" />
-                <span>Beginner Discussion Starters</span>
+            <div className="bg-[#F9F9F7] border border-[#1A1A1A] p-5 shadow-xs">
+              <h3 className="text-[10px] font-black uppercase tracking-widest text-[#444] mb-3 flex items-center gap-1.5">
+                <Lightbulb className="w-3.5 h-3.5 text-[#FF6321]" />
+                <span>Foundational Inquiries</span>
               </h3>
 
               <div className="space-y-2">
                 {[
-                  'Explain pointers vs references like I am 10 years old with an analogy',
+                  'Explain pointers vs references with an intuitive memory analogy',
                   'What is the difference between stack and heap memory in C++?',
-                  'Why should I prefer std::unique_ptr over raw new/delete?',
-                  'What is undefined behavior in C++ and how do I avoid it?',
-                  'Why does std::vector resize in exponential capacity steps?',
-                  'What does "const int* const ptr" actually mean?',
+                  'Why should I prefer std::unique_ptr over raw new and delete?',
+                  'What is undefined behavior in C++ and how do I prevent it?',
+                  'Why does std::vector allocate memory in exponential capacity steps?',
+                  'What is RAII (Resource Acquisition Is Initialization) in modern C++?',
                 ].map((prompt, i) => (
                   <button
                     key={i}
                     onClick={() => handleQuickPrompt(prompt)}
-                    className="w-full text-left p-2.5 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-xs text-slate-300 transition-colors flex items-center justify-between group"
+                    className="w-full text-left p-2.5 bg-white hover:bg-[#F0F0ED] border border-[#1A1A1A]/30 text-xs text-[#2A2A2A] transition-colors flex items-center justify-between group"
                   >
-                    <span className="line-clamp-2 leading-relaxed">{prompt}</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-blue-400 shrink-0 ml-1" />
+                    <span className="line-clamp-2 leading-relaxed font-sans">{prompt}</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#888] group-hover:text-[#FF6321] shrink-0 ml-1" />
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Optional Attached Code Context Box */}
-            <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-sm">
+            <div className="bg-[#F9F9F7] border border-[#1A1A1A] p-5 shadow-xs">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <Code2 className="w-4 h-4 text-cyan-400" />
+                <h3 className="text-[10px] font-black uppercase tracking-widest text-[#444] flex items-center gap-1.5">
+                  <Code2 className="w-3.5 h-3.5 text-[#FF6321]" />
                   <span>Attach Code Context</span>
                 </h3>
                 {codeContext && (
                   <button
                     onClick={() => setCodeContext('')}
-                    className="text-[10px] text-slate-500 hover:text-slate-300"
+                    className="text-[10px] uppercase font-bold text-[#888] hover:text-[#FF6321]"
                   >
                     Clear
                   </button>
@@ -332,9 +334,9 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
               <textarea
                 value={codeContext}
                 onChange={(e) => setCodeContext(e.target.value)}
-                placeholder="// Paste relevant C++ snippet to discuss with mentor..."
+                placeholder="// Paste C++ snippet for the mentor to review..."
                 rows={6}
-                className="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-300 placeholder-slate-600 outline-none resize-none"
+                className="w-full p-2.5 bg-white border border-[#1A1A1A]/40 text-xs font-mono text-[#1A1A1A] placeholder-[#999] outline-none resize-none"
               />
             </div>
 
@@ -345,33 +347,33 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
 
       {/* Sub-Tab 2: Compiler Error Doctor */}
       {activeSubTab === 'errorDoctor' && (
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+        <div className="bg-[#F9F9F7] border-2 border-[#1A1A1A] p-6 sm:p-8 shadow-xs space-y-6">
           <div>
-            <h2 className="text-lg font-bold text-white mb-1 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-amber-400" />
+            <h2 className="font-serif text-xl font-bold text-[#1A1A1A] mb-1 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-[#FF6321]" />
               <span>Compiler Error Diagnostic Clinic</span>
             </h2>
-            <p className="text-xs text-slate-400">
-              Paste confusing GCC, Clang, or MSVC compiler error messages (e.g. segmentation faults, vtable errors, missing semicolons, type mismatches) and get a plain-English translation with the exact fix.
+            <p className="text-xs text-[#666]">
+              Paste cryptic GCC, Clang, or MSVC error logs (segmentation faults, vtable mismatches, unresolved externals) to receive structured plain-English translations and verified fixes.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <label className="text-[10px] font-black text-[#444] uppercase tracking-widest block mb-2">
                 Compiler / Runtime Error Message:
               </label>
               <textarea
                 value={errorInput}
                 onChange={(e) => setErrorInput(e.target.value)}
-                placeholder="Paste compiler output (e.g. 'error: request for member in something not a structure' or 'Segmentation fault (core dumped)')..."
+                placeholder="Paste compiler output (e.g. 'error: request for member in something not a structure' or 'Segmentation fault')..."
                 rows={7}
-                className="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-red-300 placeholder-slate-600 outline-none focus:border-red-500"
+                className="w-full p-3 bg-white border border-[#1A1A1A] font-mono text-xs text-[#C53030] placeholder-[#999] outline-none"
               />
             </div>
 
             <div>
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <label className="text-[10px] font-black text-[#444] uppercase tracking-widest block mb-2">
                 Your C++ Code:
               </label>
               <textarea
@@ -379,7 +381,7 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
                 onChange={(e) => setErrorDoctorCode(e.target.value)}
                 placeholder="Paste the C++ source code that generated the error..."
                 rows={7}
-                className="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-blue-200 placeholder-slate-600 outline-none focus:border-blue-500"
+                className="w-full p-3 bg-white border border-[#1A1A1A] font-mono text-xs text-[#1A1A1A] placeholder-[#999] outline-none"
               />
             </div>
           </div>
@@ -387,19 +389,19 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
           <button
             onClick={handleRunErrorDoctor}
             disabled={isDiagnosing || !errorInput.trim()}
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 disabled:opacity-50 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-red-500/20 transition-all"
+            className="px-5 py-2.5 bg-[#1A1A1A] hover:bg-[#FF6321] disabled:opacity-50 text-white text-[11px] font-black uppercase tracking-wider flex items-center gap-2 transition-colors"
           >
             <Sparkles className="w-4 h-4" />
-            <span>{isDiagnosing ? 'Analyzing Error...' : 'Diagnose & Fix Error'}</span>
+            <span>{isDiagnosing ? 'Diagnosing Error Log...' : 'Diagnose & Generate Fix'}</span>
           </button>
 
           {errorDiagnosis && (
-            <div className="p-6 bg-slate-950 border border-indigo-500/30 rounded-2xl animate-fade-in space-y-3">
-              <div className="text-sm font-bold text-indigo-400 flex items-center gap-2">
-                <Bot className="w-4 h-4" />
-                <span>Doctor's Prescription & Fix:</span>
+            <div className="p-6 bg-white border-2 border-[#1A1A1A] animate-fade-in space-y-3 shadow-xs">
+              <div className="font-serif text-sm font-bold text-[#FF6321] flex items-center gap-2">
+                <Bot className="w-4 h-4 text-[#FF6321]" />
+                <span>Diagnostic Prescription & Solution:</span>
               </div>
-              <div className="text-xs text-slate-200 whitespace-pre-wrap leading-relaxed">
+              <div className="text-xs text-[#2A2A2A] whitespace-pre-wrap leading-relaxed">
                 {errorDiagnosis}
               </div>
             </div>
@@ -409,20 +411,20 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
 
       {/* Sub-Tab 3: AI Exercise Generator */}
       {activeSubTab === 'generator' && (
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-6">
+        <div className="bg-[#F9F9F7] border-2 border-[#1A1A1A] p-6 sm:p-8 shadow-xs space-y-6">
           <div>
-            <h2 className="text-lg font-bold text-white mb-1 flex items-center gap-2">
-              <Wand2 className="w-5 h-5 text-purple-400" />
-              <span>Dynamic AI Exercise Generator</span>
+            <h2 className="font-serif text-xl font-bold text-[#1A1A1A] mb-1 flex items-center gap-2">
+              <Wand2 className="w-5 h-5 text-[#FF6321]" />
+              <span>Dynamic C++ Exercise Forge</span>
             </h2>
-            <p className="text-xs text-slate-400">
-              Need targeted practice on a specific topic? Gemini can generate a tailored C++ coding problem with starter code, automated test cases, and solutions.
+            <p className="text-xs text-[#666]">
+              Request bespoke interactive C++ challenges on any concept complete with starter templates, test suites, and expected outputs.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <label className="text-[10px] font-black text-[#444] uppercase tracking-widest block mb-2">
                 Target Topic / Concept:
               </label>
               <input
@@ -430,18 +432,18 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
                 value={genTopic}
                 onChange={(e) => setGenTopic(e.target.value)}
                 placeholder="e.g. Recursion, Operator Overloading, Binary Search, Linked Lists..."
-                className="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white outline-none focus:border-purple-500"
+                className="w-full p-2.5 bg-white border border-[#1A1A1A] text-xs font-mono text-[#1A1A1A] outline-none"
               />
             </div>
 
             <div>
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <label className="text-[10px] font-black text-[#444] uppercase tracking-widest block mb-2">
                 Difficulty Level:
               </label>
               <select
                 value={genDifficulty}
                 onChange={(e) => setGenDifficulty(e.target.value)}
-                className="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white outline-none cursor-pointer"
+                className="w-full p-2.5 bg-white border border-[#1A1A1A] text-xs font-mono text-[#1A1A1A] outline-none cursor-pointer"
               >
                 <option value="beginner">Beginner</option>
                 <option value="easy">Easy</option>
@@ -454,41 +456,41 @@ export const AiMentorView: React.FC<AiMentorViewProps> = ({
           <button
             onClick={handleGenerateCustom}
             disabled={isGenerating || !genTopic.trim()}
-            className="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-purple-500/20 transition-all"
+            className="px-5 py-2.5 bg-[#1A1A1A] hover:bg-[#FF6321] disabled:opacity-50 text-white text-[11px] font-black uppercase tracking-wider flex items-center gap-2 transition-colors"
           >
             <Wand2 className="w-4 h-4" />
-            <span>{isGenerating ? 'Generating Exercise...' : 'Generate Interactive Exercise'}</span>
+            <span>{isGenerating ? 'Forging Interactive Exercise...' : 'Forge Interactive Challenge'}</span>
           </button>
 
           {generatedExercise && (
-            <div className="p-6 bg-slate-950 border border-purple-500/30 rounded-2xl animate-fade-in space-y-4">
+            <div className="p-6 bg-white border-2 border-[#1A1A1A] animate-fade-in space-y-4 shadow-xs">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-purple-400 uppercase tracking-wider">
-                  Generated Exercise
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#FF6321]">
+                  Generated Problem
                 </span>
-                <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">
+                <span className="text-[10px] uppercase font-mono font-bold px-2 py-0.5 border border-[#1A1A1A] bg-[#FAF9F5] text-[#1A1A1A]">
                   {generatedExercise.difficulty}
                 </span>
               </div>
 
-              <h3 className="text-base font-bold text-white">
+              <h3 className="font-serif text-lg font-bold text-[#1A1A1A]">
                 {generatedExercise.title}
               </h3>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-[#444] leading-relaxed">
                 {generatedExercise.description}
               </p>
 
-              <div className="p-3 bg-slate-900 rounded-xl font-mono text-xs text-blue-200">
+              <div className="p-3 bg-[#FAF9F5] border border-[#1A1A1A]/40 font-mono text-xs text-[#1A1A1A] overflow-x-auto">
                 <pre>{generatedExercise.starterCode}</pre>
               </div>
 
               {onLoadCustomExercise && (
                 <button
                   onClick={() => onLoadCustomExercise(generatedExercise)}
-                  className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all"
+                  className="px-4 py-2 bg-[#1A1A1A] hover:bg-[#FF6321] text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-2 transition-colors"
                 >
                   <Code2 className="w-4 h-4" />
-                  <span>Open in Interactive Workspace</span>
+                  <span>Load into Interactive Workspace</span>
                 </button>
               )}
             </div>
